@@ -1,0 +1,26 @@
+<%= render 'shared/header' %>
+<ul class='menu-list'>
+  <%# ユーザーがログイン状態かどうかで表示を変化させる %>
+    <% if user_signed_in? %>
+        <li><%= link_to current_user.nickname,"#", class: "user-nickname" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path, method: :get , class: "login" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, method: :get , class: "sign-up" %></li>
+      <% end %>
+  </ul>
+<div>top page</div>
+
+<%# サインイン状態では登録している店舗の情報のみを表示させる %>
+<% if user_signed_in?%>
+  <div class='sales-list'>
+    サインインしています<br>
+    セール情報です
+  </div>
+<%# サインイン状態でないときの表示 %>
+<% else %>
+  <div class='sales-list'>
+    サインインしていません<br>
+    セール情報です
+  </div>
+<% end %>
