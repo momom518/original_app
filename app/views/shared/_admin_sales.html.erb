@@ -5,22 +5,24 @@
       <%= link_to '管理している店舗一覧', shops_path, class: "shops-index" %>
       <%= link_to '新しい店舗を追加', new_shop_path, class: "add-shop" %>
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%>
-      
     </div>
   </div>
-  <div class='sale-info'>
-    <h3>今日のセール情報</h3>
-    <% @sales.each do|sale|%>
-      <% if current_user.id = sale.user_id%>
-        <%= sale.shop.company_name%>
-        <%= sale.shop.shop_name%><br>
-        <%= sale.heading%><br>
-        <%= sale.start_time%><br>
-        <%= sale.end_time%><br>
-        <%= sale.info%><br>
-        <%= sale.caution%><br>
-      <%else%>
-        sale情報はありません
-      <% end %>
-    <%end%>
+  <div class='sales-list'>
+    <div class='sale-info'>
+      <h3>今日のセール情報</h3>
+      <% @sales.each do|sale|%>
+        <% if current_user.id = sale.user_id%>
+          <%= sale.shop.company_name%>
+          <%= sale.shop.shop_name%><br>
+          <%= sale.heading%><br>
+          <%= sale.start_time%><br>
+          <%= sale.end_time%><br>
+          <%= sale.info%><br>
+          <%= sale.caution%><br>
+        <%else%>
+          sale情報はありません
+        <% end %>
+      <%end%>
+    </div>
+  </div>
 </div>

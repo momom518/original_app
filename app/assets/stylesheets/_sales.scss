@@ -1,0 +1,69 @@
+.top{
+  margin:20px;
+  .top-user{
+    border:3px solid yellowgreen;
+    .top-message{
+      display: flex;
+      justify-content: center;
+    }
+    .top-list{
+      display: flex;
+      justify-content: center;
+      padding:10px;
+      .sign-up{
+        background-color: orange;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        margin-right: 50px;
+      }
+      .login{
+        background-color: greenyellow;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        margin-right: 50px;
+      }
+      .shops-index{
+        background-color: orange;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        margin-right: 50px;
+      }
+      .add-shop{
+        background-color: #e24d89;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        margin-right: 50px;
+      }
+      .logout{
+        background-color: blue;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        margin-right: 50px;
+      }
+    }
+  }
+  .sales-list{
+    // overflow:scroll;
+    .sale-info{
+      margin-top:10px;
+      padding-bottom:5px;
+      border:5px solid orange;
+      background-color: #FFFACD;
+      .sale-info-message{
+        color:red;
+        padding:10px;
+        background-color: #98FB98;
+      }
+    }
+  }
+}

@@ -1,21 +1,22 @@
 <div class='top'>
-  <h4>サインインしています</h4>
-  <div class='user-list'>
-    <ul>
-      <li><%= link_to current_user.nickname,"#", class: "user-nickname" %></li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-    </ul>
+  <div class='top-user'>  
+  <h4 class='top-message'><%= current_user.nickname %>さんはサインインしています</h4>
+    <div class='top-list'>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
+    </div>
   </div>
-  <div class='sale-info'>
-    <h3>今日のセール情報</h3>
-    <% @sales.each do|sale|%>
-      <%= sale.shop.company_name%>
-      <%= sale.shop.shop_name%><br>
-      <%= sale.heading%><br>
-      <%= sale.start_time%><br>
-      <%= sale.end_time%><br>
-      <%= sale.info%><br>
-      <%= sale.caution%><br>
-    <% end %>
+  <div class='sales-list'>
+    <div class='sale-info'>
+      <h3 class='sale-info-message'>今日のセール情報</h3>
+      <% @sales.each do|sale|%>
+        <%= sale.shop.company_name%>
+        <%= sale.shop.shop_name%><br>
+        <%= sale.heading%><br>
+        <%= sale.start_time%><br>
+        <%= sale.end_time%><br>
+        <%= sale.info%><br>
+        <%= sale.caution%><br>
+      <% end %>
+    </div>
   </div>
 </div>
