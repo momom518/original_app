@@ -1,0 +1,78 @@
+<%= render 'shared/header' %>
+
+<%= form_with model: @shop, url: shops_path, method: :post, class:'registration-main', local: true do |f| %>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h2 class='form-header-text'>
+        店情報入力
+      </h2>
+    </div>
+
+    <div class="form-group">
+      <div class="form-text-wrap">
+        <label class="form-text">店舗画像</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">店名</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :company_name, class:"input-default", placeholder:"例) スーパーX", maxlength:"40" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">事業所名</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :shop_name, class:"input-default", placeholder:"例) 千葉中央店", maxlength:"40" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">郵便番号</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :postal_code, class:"input-default", placeholder:"例) 270-1010", maxlength:"8" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">都道府県</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">住所</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :address, class:"input-default", placeholder:"例) 千葉県千葉市１−１−１", maxlength:"40" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">電話番号</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :tell, class:"input-default", placeholder:"例) 047111222", maxlength:"11" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">営業時間</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :business_hour, class:"input-default", placeholder:"例) 9:00-20:00", maxlength:"20" %>
+    </div>
+    <div class="submit-btn">
+      <%= f.submit '新規登録',class:"submit-red-btn" %>
+    </div>
+  </div>
+
+<% end %>

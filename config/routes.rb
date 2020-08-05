@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'sales#index'
-  resources :sales, only: [:index]
+  
+  # resources :bookmark, only: [:index]
+  resources :shops do
+    resources :sales, only: [:index, :new, :create, :edit, :update, :destroy]
+    # resources :bookmark, only: [:create, :destroy]
+  end
 end
