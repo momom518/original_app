@@ -1,3 +1,13 @@
-<header>
-<%= link_to 'TOKUBAI', root_path, method: :get , class: "login" %>
+<header class='header'>
+  <div class='header-left'>
+    <%= link_to 'TOKUBAI', root_path, method: :get , class: "app-name" %>
+  </div>
+  <div class='header-right'>
+    <form class="search-form" action="#">
+      <input class='input-box' placeholder='キーワードから探す'>
+      <button class="search-button">
+          <%#= image_tag "search.png", class:"search-icon" %>
+      </button>
+    </form>
+  </div>
 </header>
