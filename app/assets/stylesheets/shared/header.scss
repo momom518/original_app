@@ -1,0 +1,28 @@
+shared/header
+.header{
+  width:100vw;
+  height:60px;
+  background-color:#33FF99;
+  display:flex;
+  .header-left{
+    display:flex;
+    justify-content:center;
+    border:white;
+    .app-name{
+      background-color: #CCFF00;
+      text-decoration:none;
+      padding:10px;
+      color:white;
+      font-size: 25px;
+      margin-left:30px;
+    }
+  }
+  .header-right{
+    .search-form{
+    position:absolute;
+    top:20px;
+    right:40px;
+    }
+
+  }
+}

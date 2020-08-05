@@ -1,0 +1,18 @@
+.fotter{
+  width:100vw;
+  height:60px;
+  background-color:#33FF99;
+  border-top:10px solid white;
+  .fotter-logo{
+    display: flex;
+    justify-content: center;
+    .app-name{
+      background-color: #CCFF00;
+      text-decoration:none;
+      padding:10px;
+      color:white;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+  }
+}
