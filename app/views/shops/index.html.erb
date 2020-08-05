@@ -1,0 +1,56 @@
+<%= render 'shared/header'%>
+
+  <div class='admin-name'>
+    <%= current_user.nickname%>
+    さんが管理している店情報一覧
+    <%= link_to '店舗情報を追加', new_shop_path, class: 'add-shop-btn'%>
+  </div>
+  <% if current_user.shops.present?%>
+  <div class='shop-list'>
+    <div class='my-shop-list'>
+      <% current_user.shops.each do |s|%>
+        <div class='shop-info'>
+          <div class='name'>
+            <label class="form-text">＜店舗名＞</label><br>
+            <%= s.company_name%>
+            <%= s.shop_name%>
+            <%= image_tag s.image, class: "shop-img"%>
+          </div>
+          <div class='information'>
+            <label class="form-text">＜店舗情報＞<br></label>
+            
+            <label class="form-text">所在地<br></label>
+            <%= s.postal_code%><br>
+            <%= s.prefecture.name%>
+            <%= s.address%><br>
+            <label class="form-text">電話番号<br></label>
+            <%= s.tell%><br>
+            <label class="form-text">営業時間<br></label>
+            <%= s.business_hour%>
+          </div>
+          <div class="shop-btn">
+            <%= link_to 'セール情報を追加', new_shop_sale_path(s.id), class: 'add-sales-btn'%>
+            <%= link_to '店舗情報を編集', edit_shop_path(s.id), class: 'shop-edit-btn'%>
+            <%= link_to '店舗情報を削除', shop_path(s.id), method: :delete, class: 'shop-delete-btn'%>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+
+    <% else%>
+    <div class='shop-list'>
+      <div class='my-shop-list'>
+        <div class='my-shop-list-message'>
+        店舗情報がありません<br>
+        </div>
+        <div class="shop-btn">
+          <%= link_to '店舗情報を登録', new_shop_path, class: 'add-shop-btn'%>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+
+<%= render 'shared/footer'%>

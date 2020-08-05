@@ -1,0 +1,57 @@
+.admin-name{
+  height:40px;
+  font-size: 20px;
+  display: flex;
+  justify-content:space-between;
+  border-bottom:10px solid #E4FF8D;
+  .add-shop-btn{
+    background-color: #FF0066;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    font-size: 12px;
+    margin-right: 50px;
+  }
+}
+
+.shop-list{
+  display: flex;
+  justify-content: center;
+  background-color: #E4FF8D;
+  .my-shop-list{
+    width:600px;
+    .shop-info{
+      background-color: white;
+      padding:10px;
+      margin: 50px 0px;
+      .shop-img{
+        width:80%;
+        height:60%;
+        margin-left: 50px;
+      }
+      .shop-btn{
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-around;
+        .add-sales-btn{
+          background-color: orange;
+          text-decoration: none;
+          color: white;
+          padding: 10px;
+        }
+        .shop-edit-btn{
+          background-color: #60EEFF;
+          text-decoration: none;
+          color: white;
+          padding: 10px;
+        }
+        .shop-delete-btn{
+          background-color: #DC143C ;
+          text-decoration: none;
+          color: white;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
