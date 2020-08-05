@@ -24,20 +24,18 @@ class SalesController < ApplicationController
   end
 
   def sale_params
-    params.require(:sale).permit( :image,
-                                  :heading,
-                                  :info,
-                                  :caution,
-                                  :day,
-                                  :start_time,
-                                  :end_time,
-                                  :shop_id).merge(shop_id: params[:shop_id],
-                                                  user_id: current_user.id)
+    params.require(:sale).permit(:image,
+                                 :heading,
+                                 :info,
+                                 :caution,
+                                 :day,
+                                 :start_time,
+                                 :end_time,
+                                 :shop_id).merge(shop_id: params[:shop_id],
+                                                 user_id: current_user.id)
   end
 
   def admin_user
     redirect_to redirect_to root_path unless current_user.admin?
   end
 end
-
-
