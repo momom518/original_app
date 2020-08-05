@@ -1,0 +1,39 @@
+.top{
+  margin:20px;
+  .top-user{
+    border:3px solid yellowgreen;
+    .top-message{
+      display: flex;
+      justify-content: center;
+    }
+    .top-list{
+      display: flex;
+      justify-content: center;
+      padding:10px;
+      .shops-index{
+        background-color: orange;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        margin-right: 50px;
+      }
+      .add-shop{
+        background-color: #e24d89;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        margin-right: 50px;
+      }
+      .logout{
+        background-color: blue;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        margin-right: 50px;
+      }
+    }
+  }
+}

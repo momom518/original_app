@@ -1,11 +1,12 @@
 <div class='top'>
-  <h4 class='top-message'>管理者ユーザーです</h4>
-  <div class='user-list'>
-    <ul>
-      <li><%= link_to '管理している店舗一覧', shops_path, class: "shops-index" %></li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%></li>
-      <li><%= link_to '新しい店舗を追加', new_shop_path, class: "add-shop" %></li>
-    </ul>
+  <div class='top-user'>
+    <h4 class='top-message'>管理者ユーザーです</h4>
+    <div class='top-list'>
+      <%= link_to '管理している店舗一覧', shops_path, class: "shops-index" %>
+      <%= link_to '新しい店舗を追加', new_shop_path, class: "add-shop" %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%>
+      
+    </div>
   </div>
   <div class='sale-info'>
     <h3>今日のセール情報</h3>
