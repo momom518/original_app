@@ -1,12 +1,16 @@
 <%= render 'shared/header' %>
 
-    <%# ユーザーがログイン状態かどうかで表示を変化させる %>
-    <% if user_signed_in? && current_user.admin? %>
-      <%= render 'shared/admin_sales'%>
-    <% elsif user_signed_in? %>
-      <%= render 'shared/user_sales'%>
-    <% else %>
-      <%= render 'shared/login'%>
-    <% end %>
+<div class='top-image'>
+  
+</div>
+
+<%# ユーザーのログイン状態によって表示を変化させる %>
+<% if user_signed_in? && current_user.admin? %>
+  <%= render 'shared/admin_sales'%>
+<% elsif user_signed_in? %>
+  <%= render 'shared/user_sales'%>
+<% else %>
+  <%= render 'shared/login'%>
+<% end %>
 
 <%= render 'shared/footer'%>
