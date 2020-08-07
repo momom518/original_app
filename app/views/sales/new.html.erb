@@ -28,7 +28,7 @@
         <label class="form-text">見出し ＜40字以内＞</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :heading, class:"input-default", placeholder:"夕方５時からの夕市セール！", maxlength:"40" %>
+      <%= f.text_area :heading, class:"sale-heading", placeholder:"夕方５時からの夕市セール！", maxlength:"40" %>
     </div>
     
     <div class="form-group">
@@ -36,14 +36,14 @@
         <label class="form-text">セール詳細 ＜40字以内＞</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :info, class:"input-default", placeholder:"本日はキャベツ、大根、ほうれんそうが98円です。", maxlength:"40" %>
+      <%= f.text_area :info, class:"sale-input", placeholder:"本日はキャベツ、大根、ほうれんそうが98円です。", maxlength:"40" %>
     </div>
 
     <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">備考 ＜40字以内＞</label>
       </div>
-      <%= f.text_area :caution, class:"input-default", placeholder:"キャベツ、大根、ほうれん草はお一家族様につき１個までです。", maxlength:"40" %>
+      <%= f.text_area :caution, class:"sale-input", placeholder:"キャベツ、大根、ほうれん草はお一家族様につき１個までです。", maxlength:"40" %>
     </div>
 
     <div class="form-group">
@@ -51,7 +51,15 @@
         <label class="form-text">日付</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.date_select :day, {}, class: 'sale_date' %>
+      <div class='form-sale-date'>
+        <%= raw sprintf(
+          f.date_select(
+          :day,
+          class: 'sale_date',
+          use_month_numbers: true,
+          date_separator: '%s'),
+          "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      </div>
     </div>
 
     <div class="form-group">
@@ -70,10 +78,11 @@
       <%= f.datetime_select :end_time, {}, class: 'sale_end_time' %>
     </div>
 
-    <div class="submit-btn">
-      <%= f.submit '新規登録',class:"submit-red-btn" %>
+    <div class="register-btn">
+      <%= f.submit '新規登録',class:"register-red-btn" %>
     </div>
 
   </div>
 
 <% end %>
+<%= render 'shared/footer'%>
