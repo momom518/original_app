@@ -1,17 +1,17 @@
 <%= render 'shared/header' %>
 
-<%= form_with model: [@shop, @sale], url: shop_sales_path, method: :post, class:'registration-main', local: true do |f| %>
+<%= form_with model: [@shop,@sale], class:'registration-main', local: true do |f| %>
+
   <div class='form-wrap'>
     <div class='form-header'>
       <h2 class='form-header-text'>
-        セール情報入力
+        セール情報編集
       </h2>
     </div>
 
     <div class="form-group">
       <div class="form-text-wrap">
-        <label class="form-text">関連商品の画像等</label>
-        <span class="indispensable">必須</span>
+        <label class="form-text">商品の画像等</label>
       </div>
       <div class="click-upload">
         <p>
@@ -34,7 +34,7 @@
         <label class="form-text">見出し ＜40字以内＞</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :heading, class:"sale-heading", placeholder:"夕方５時からの夕市セール！野菜各種９８円です。", maxlength:"40" %>
+      <%= f.text_area :heading, class:"sale-heading", placeholder:"夕方５時からの夕市セール！", maxlength:"40" %>
     </div>
     
     <div class="form-group">
@@ -42,15 +42,14 @@
         <label class="form-text">セール詳細 ＜40字以内＞</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :info, class:"sale-input", placeholder:"対象商品はキャベツ、大根、ほうれんそう、小松菜です。", maxlength:"40" %>
+      <%= f.text_area :info, class:"sale-input", placeholder:"本日はキャベツ、大根、ほうれんそうが98円です。", maxlength:"40" %>
     </div>
 
     <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">備考 ＜40字以内＞</label>
-        <span class="indispensable">必須 （ない場合はなしと記入）</span>
       </div>
-      <%= f.text_area :caution, class:"sale-input", placeholder:"お一家族様１個限りになります。", maxlength:"40" %>
+      <%= f.text_area :caution, class:"sale-input", placeholder:"キャベツ、大根、ほうれん草はお一家族様につき１個までです。", maxlength:"40" %>
     </div>
 
     <div class="form-group">
@@ -99,8 +98,9 @@
     </div>
 
     <div class="register-btn">
-      <%= f.submit '新規登録',class:"register-red-btn" %>
+      <%= f.submit '編集',class:"register-red-btn" %>
     </div>
+
   </div>
 
 <% end %>

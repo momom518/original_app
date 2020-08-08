@@ -39,14 +39,12 @@
     </div>
 
     <% else%>
-    <div class='shop-list'>
-      <div class='my-shop-list'>
-        <div class='my-shop-list-message'>
-        店舗情報がありません<br>
-        </div>
-        <div class="shop-btn">
-          <%= link_to '店舗情報を登録', new_shop_path, class: 'add-shop-btn'%>
-        </div>
+    <div class='new-shop-list'>
+      <div class='new-shop-message'>
+        <div class='message'>登録されている店舗はありません</div>
+      </div>
+      <div class="new-shop-btn">
+        <%= link_to '店舗情報を登録', new_shop_path, class: 'add-shop-btn'%>
       </div>
     </div>
     <% end %>

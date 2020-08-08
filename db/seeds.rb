@@ -9,3 +9,9 @@ User.create!(nickname: 'Bスーパー管理者',
              password: '111aaa',
              password_confirmation: '111aaa',
              admin: true)
+
+User.create!(nickname: 'taro',
+            email: 'taro@example.com',
+            password: '111aaa',
+            password_confirmation: '111aaa',
+            admin: false)
