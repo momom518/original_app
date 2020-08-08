@@ -19,7 +19,6 @@
         color: white;
         padding: 10px;
         font-size: 12px;
-        margin-right: 50px;
       }
       .login{
         background-color: greenyellow;
@@ -51,27 +50,138 @@
         color: white;
         padding: 10px;
         font-size: 12px;
-        margin-right: 50px;
+        
       }
     }
   }
   .sales-list{
+    border:3px solid yellowgreen;
+    padding:30px;
+    font-size: 15px;
     overflow:scroll;
-    .sale-info{
+    .sales-info{
       margin-top:10px;
       padding-bottom:5px;
       display: flex;
       justify-content: center;
-      .sale-message{
+      .sales-message{
         border-bottom:5px solid orange;
       }
-      .sale-info-message{
-        color:red;
-        padding:10px;
-        background-color: #98FB98;
+    }
+    .sale-data{
+      display: flex;
+      justify-content: center;
+      .sale-information{
+        width:550px;
+        border:1px solid gray;
+        padding:50px;
+        margin-top:50px;
+        .sale-shop{
+          display: flex;
+          font-size: 18px;
+          .sale-shop-image{
+            height:100px;
+            width:150px;
+            margin-right: 30px;
+            margin-bottom: 15px;
+          }
+        }
+        .sale-image{
+          height: 200px;
+          width:300px;
+          margin-left:120px;
+        }
+        .heading{
+          font-size: 20px;
+          padding: 0px 10px;
+          border-bottom:3px solid orange;
+        }
+        .sale-hour{
+          margin:6px 0px;
+          padding: 10px;
+          border:1px solid gainsboro;
+        }
+        .sale-info{
+          margin:6px 0px;
+          padding: 10px;
+          border:1px solid gainsboro;
+        }
+        .sale-caution{
+          margin:6px 0px;
+          padding: 10px;
+          border:1px solid gainsboro;
+          .message{
+            color:red;
+          }
+        }
+        .sale-btn{
+          display: flex;
+          justify-content: center;
+          .sale-delete{
+          background-color: orangered;
+          text-decoration: none;
+          color: white;
+          padding: 10px;
+          font-size: 12px;
+          }
+      }
       }
     }
   }
+
+  .shops-lists{
+    margin: 50px 0px;
+    border: 3px solid orange;
+    padding: 30px;
+    overflow: scroll;
+    .shops-list{
+      display: flex;
+      justify-content: center;
+      border: green;
+      .shops-message{
+        border-bottom:3px solid yellowgreen;
+      }
+    }
+    .shops-data{
+      display: flex;
+      justify-content: center;
+      
+      .shop-info{
+        border: 1px solid gray;
+        width : 550px;
+        height:500px;
+        margin-top: 50px;
+        padding: 50px;
+        .shop-name{
+          font-size: 18px;
+          padding: 10px;
+          border: 1px solid gainsboro;
+          .shop-image{
+            height: 150px;
+            width:200px;
+          }
+        }
+        .shop-data{
+          .shop-address{
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid gainsboro;
+          }
+          .shop-tell{
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid gainsboro;
+          }
+          .shop-hour{
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid gainsboro;
+          }
+        }
+      }
+    }
+  }
+
   .top-image{
     display: flex;
     justify-content: center;
