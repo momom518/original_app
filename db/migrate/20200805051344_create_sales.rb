@@ -9,7 +9,6 @@ class CreateSales < ActiveRecord::Migration[6.0]
       t.date             :day, null:false
       t.time             :start_time, null:false
       t.time             :end_time, null:false
-      t.text             :image
       t.timestamps
     end
   end
