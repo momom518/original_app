@@ -18,16 +18,15 @@
 
     <div class='sale-data'>
       <% @sales.each do|sale|%>
-      <div>
         <div class='sale-information'>
           <div class='sale-shop'>
             <%= image_tag sale.shop.image, class:'sale-shop-image'%>
             <%= sale.shop.company_name%>
             <%= sale.shop.shop_name%>
-            
           </div>
           <div class='heading'>
             <%= sale.heading%>
+            <%= image_tag sale.image, class:'sale-image'%>
           </div>
           <div class='sale-hour'>
             ＜セール開催時刻＞<br>
@@ -41,11 +40,13 @@
             <%= sale.info%>
           </div>
           <div class='sale-caution'>
-            <%= sale.caution%>
+            ＜備考＞<br>
+            <div class='message'>
+              <%= sale.caution%>
+            </div>
           </div>
-      </div>
+        </div>
       <%end%>
-      </div>
     </div>
   </div>
 
@@ -54,41 +55,54 @@
   </div>
 
   <%# 店舗情報一覧%>
+  
+  <%if @shops.present?%>
+  
   <div class='shops-lists'>
     <div class='shops-list'>
-      <h3 class='shops-message'>店舗一覧</h3>
+      <h3 class='shops-message'>加盟店舗一覧</h3>
     </div>
     <div class='shops-data'>
-      <% @shops.each do |shop|%>
-        <div class='shop-info'>
-          <div class='shop-name'>
-          <%= shop.company_name%>
-            <%= shop.shop_name%><br>
-            <%= image_tag shop.image, class: "shop-image"%>
-          </div>
-          <div class='shop-data'>
-            <div class='shop-address'>
-              ＜所在地＞<br>
-              <%= shop.postal_code%><br>
-              <%= shop.prefecture.name%>
-              <%= shop.address%><br>
+      <div>
+        <% @shops.each do |shop|%>
+          <div class='shop-info'>
+            <div class='shop-name'>
+              <%= shop.company_name%>
+              <%= shop.shop_name%><br>
+              <%= image_tag shop.image, class: "shop-image"%>
             </div>
-            <div class='shop-tell'>
-              ＜電話番号＞<br>
-              <%= shop.tell%>
+            <div class='shop-data'>
+              <div class='shop-address'>
+                ＜所在地＞<br>
+                <%= shop.postal_code%><br>
+                <%= shop.prefecture.name%>
+                <%= shop.address%><br>
+              </div>
+              <div class='shop-tell'>
+                ＜電話番号＞<br>
+                <%= shop.tell%>
+              </div>
+              <div class='shop-hour'>
+                ＜営業時間＞<br>
+                <%= shop.business_hour%>
+              </div>
             </div>
-            <div class='shop-hour'>
-              ＜営業時間＞<br>
-              <%= shop.business_hour%>
+            <div class='bookmark-btn'>
+              <%= link_to 'ブックマークに追加', '#'%>
             </div>
-          </div>
-          <div class='bookmark-btn'>
-            <%= link_to 'ブックマークに追加', '#'%>
-          </div>
-        </div>  
-      <% end %>
+          </div>  
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%else%>
+  <div class='shop-info'>
+    <div class='shop-name'>
+      加盟店舗がありません
     </div>
   </div>
 
+  <%end%>
+  
 
 </div>
