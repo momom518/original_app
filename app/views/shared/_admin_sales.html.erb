@@ -10,66 +10,61 @@
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%>
     </div>
     <div class='top-image'>
-      <%= image_tag 'top_image.jpg', class:'top-image-sale'%>
+      <%= image_tag 'top_image7.jpg', class:'top-image-sale'%>
     </div>
   </div>
   <%# //ユーザー情報を表示%>
 
-  <%# セール情報を表示%>
-  <div class='sales-list'>
-              <div class='sales-info'>
-                <h3 class='sales-message'>今日のセール情報</h3>
-              </div>
-    <div class='sale-data'>
-      <%# 今日のセール情報があるかどうか判定%>
-      <% if @sales.present? %>
-        <% @sales.each do|sale|%>
-          <%# 管理者の管理しているセール情報のみ表示%>
-          <%if current_user.id == sale.shop.user_id%>
-            
-              <div class='sale-information'>
-                <div class='sale-shop'>
-                  <%= image_tag sale.shop.image, class:'sale-shop-image'%>
-                  <%= sale.shop.company_name%>
-                  <%= sale.shop.shop_name%>
-                </div>
-                <div class='heading'>
-                  <%= sale.heading%>
-                </div>
-                <%= image_tag sale.image, class:'sale-image'%>
-                <div class='sale-hour'>
-                  ＜セール開催時刻＞<br>
-                  <%= sale.start_time.strftime("%H:%M")%>
-                  〜
-                  <%= sale.end_time.strftime("%H:%M")%>
-                </div>
-                <div class='sale-info'>
-                  ＜詳細＞<br>
-                  <%= sale.info%>
-                </div>
-                <div class='sale-caution'>
-                  ＜備考＞<br>
-                  <div class='message'>
-                    <%= sale.caution%>
-                  </div>
-                </div>
-                <div class='sale-btn'>
-                  <%= link_to '削除', sale_path(sale.id), method: :delete,class:'sale-delete' %>
-                </div>
-              </div>
-          <%else%>
-          <%end%>
-        <%end%>
-        <%# //管理者の管理しているセール情報のみ表示%>
-      <%else%>
-        <div class='sale-information'>
-          <div class='no-sale'>
-            <div class='message'>今日のセール情報はありません</div>
-          </div>
-         </div>
-      <%end%>
-      <%#// 今日のセール情報があるか判定%>
+<div class='sales-list'>
+    <div class='sales-info'>
+      <h3 class='sales-message'>今日のセール情報一覧</h3>
     </div>
+  <% if @sales.present?%>
+    <div class='sale-data'>
+    <div>
+      <% @sales.each do|sale|%>
+        <div class='sale-information'>
+          <div class='sale-shop'>
+            <%= image_tag sale.shop.image, class:'sale-shop-image'%>
+            <%= sale.shop.company_name%>
+            <%= sale.shop.shop_name%>
+          </div>
+          <div class='heading'>
+            <%= sale.heading%>
+            <%= image_tag sale.image, class:'sale-image'%>
+          </div>
+          <div class='sale-hour'>
+            ＜セール開催時刻＞<br>
+            <%= sale.start_time.strftime("%H:%M")%>
+             〜
+            <%= sale.end_time.strftime("%H:%M")%>
+          </div>
+          <div class='sale-info'>
+            ＜詳細＞<br>
+            <%= sale.info%>
+          </div>
+          <div class='sale-caution'>
+            ＜備考＞<br>
+            <div class='message'>
+              <%= sale.caution%>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    </div>
+  <%else%>
+    <div class='sale-data'>
+      <div class='sale-information'>
+        <div class='heading'>
+          本日はセール情報がありません
+        </div>
+        <%= image_tag 'no-sale.jpg', class:'top-image-sale', size:'550x300'%>
+      </div>
+    </div>
+  
+  <%end%>
   </div>
-  <%# //セール情報を表示%>
+
+  
 </div>

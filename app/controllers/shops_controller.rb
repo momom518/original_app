@@ -52,7 +52,8 @@ class ShopsController < ApplicationController
                                  :prefecture_id,
                                  :address,
                                  :tell,
-                                 :business_hour,
+                                 :start_time,
+                                 :end_time,
                                  :image).merge(user_id: current_user.id)
   end
 

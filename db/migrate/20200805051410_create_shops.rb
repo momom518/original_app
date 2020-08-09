@@ -6,7 +6,8 @@ class CreateShops < ActiveRecord::Migration[6.0]
       t.string        :postal_code, null: false
       t.integer       :prefecture_id, null: false
       t.string        :address, null: false
-      t.string        :business_hour, null: false
+      t.time          :start_time, null: false
+      t.time          :end_time, null: false
       t.string        :tell, null: false
       t.references    :user
       t.timestamps

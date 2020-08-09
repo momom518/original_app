@@ -1,7 +1,16 @@
 class SalesController < ApplicationController
   def index
-    @sales = Sale.where(day: Time.new)
     @shops = Shop.all
+    @sales = Sale.where(day: Time.new)
+
+    if user_signed_in?
+      @bookmarks = current_user.bookmark_shops
+    end
+  end
+
+  def show
+    @sales = Sale.where(shop_id: params[:id]).where(day: Time.new)
+    @shop = Shop.find(params[:id])
   end
 
   def new

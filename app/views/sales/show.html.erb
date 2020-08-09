@@ -1,0 +1,51 @@
+<%= render 'shared/header'%>
+<div class='top'>
+  <div class='sales-list'>
+      <div class='sales-info'>
+        <h3 class='sales-message'><%= @shop.company_name%><%= @shop.shop_name%>今日のセール情報</h3>
+      </div>
+    <%if @sales.present?%>
+      <div class='sale-data'>
+        <% @sales.each do|sale|%>
+          <div class='sale-information'>
+            <div class='sale-shop'>
+              <%= image_tag sale.shop.image, class:'sale-shop-image'%>
+              <%= sale.shop.company_name%>
+              <%= sale.shop.shop_name%>
+            </div>
+            <div class='heading'>
+              <%= sale.heading%>
+              <%= image_tag sale.image, class:'sale-image'%>
+            </div>
+            <div class='sale-hour'>
+              ＜セール開催時刻＞<br>
+              <%= sale.start_time.strftime("%H:%M")%>
+              〜
+              <%= sale.end_time.strftime("%H:%M")%>
+            </div>
+            <div class='sale-info'>
+              ＜詳細＞<br>
+              <%= sale.info%>
+            </div>
+            <div class='sale-caution'>
+              ＜備考＞<br>
+              <div class='message'>
+                <%= sale.caution%>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    <%else%>
+    <div class='sale-data'>
+      <div class='sale-information'>
+        <div class='heading'>
+          本日はセール情報がありません
+        </div>
+        <%= image_tag 'no-sale.jpg', class:'top-image-sale', size:'550x300'%>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>
+<%= render 'shared/footer'%>

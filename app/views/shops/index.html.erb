@@ -26,7 +26,7 @@
             <label class="form-text">電話番号<br></label>
             <%= s.tell%><br>
             <label class="form-text">営業時間<br></label>
-            <%= s.business_hour%>
+            <%= s.start_time.strftime("%H:%M")%> 〜<%= s.end_time.strftime("%H:%M")%>
           </div>
           <div class="shop-btn">
             <%= link_to 'セール情報を追加', new_shop_sale_path(s.id), class: 'add-sales-btn'%>
