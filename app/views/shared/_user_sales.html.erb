@@ -10,44 +10,100 @@
       <%= image_tag 'top_image3.jpg', class:'top-image-sale'%>
     </div>
   </div>
+
+  <div class='shops-lists'>
+      <div class='shops-list'>
+        <h3 class='shops-message'>ブックマーク店舗一覧</h3>
+      </div>
+      <div class='shops-data'>
+        <div>
+          <%if @bookmarks.present?%>
+            <div class='bookmark-info'>
+              <div class='bookmark-name'>
+                <% @bookmarks.each do |shop|%>
+                <div class='bookmark-shop'>
+                  <div class='image'>
+                    <%= image_tag shop.image, class: "shop-image"%>
+                  </div>
+                  <div class='shop-name'>
+                    <div class='bookmark-shop-name'>
+                      <%= shop.company_name%>
+                      <%= shop.shop_name%>
+                    </div>
+                  </div>
+                  <div class='bookmark-btn'>
+                    <%= link_to 'セール詳細を表示', sale_path(shop.id), class: "show-sales" %>
+                    <%= link_to 'ブックマークから削除', shop_bookmarks_path(shop.id), method: :delete, class:'bookmark-delete'%>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+            </div>
+        <%else%>
+          <div class='shop-info'>
+              ブックマークしている店舗がありません
+            <%= image_tag 'no-shop.jpg', class:'top-image-sale', size:'550x300'%>
+            加盟店一覧からブックマークしましょう!
+          </div>
+        <%end%>
+        </div>
+      </div>
+    </div>
+
+    <div class='top-image'>
+      <%= image_tag 'top_image5.jpg', class:'top-image-sale'%>
+    </div>
+
   <%# セール情報一覧%>
   <div class='sales-list'>
     <div class='sales-info'>
-      <h3 class='sales-message'>今日のセール情報</h3>
+      <h3 class='sales-message'>今日のセール情報一覧</h3>
     </div>
-
+  <% if @sales.present?%>
     <div class='sale-data'>
-      <% @sales.each do|sale|%>
-        <div class='sale-information'>
-          <div class='sale-shop'>
-            <%= image_tag sale.shop.image, class:'sale-shop-image'%>
-            <%= sale.shop.company_name%>
-            <%= sale.shop.shop_name%>
-          </div>
-          <div class='heading'>
-            <%= sale.heading%>
-            <%= image_tag sale.image, class:'sale-image'%>
-          </div>
-          <div class='sale-hour'>
-            ＜セール開催時刻＞<br>
-            <%= sale.start_time.strftime("%H:%M")%>
-             〜
-            <%= sale.end_time.strftime("%H:%M")%>
-          </div>
-          
-          <div class='sale-info'>
-            ＜詳細＞<br>
-            <%= sale.info%>
-          </div>
-          <div class='sale-caution'>
-            ＜備考＞<br>
-            <div class='message'>
-              <%= sale.caution%>
+      <div>
+        <% @sales.each do|sale|%>
+          <div class='sale-information'>
+            <div class='sale-shop'>
+              <%= image_tag sale.shop.image, class:'sale-shop-image'%>
+              <%= sale.shop.company_name%>
+              <%= sale.shop.shop_name%>
+            </div>
+            <div class='heading'>
+              <%= sale.heading%>
+              <%= image_tag sale.image, class:'sale-image'%>
+            </div>
+            <div class='sale-hour'>
+              ＜セール開催時刻＞<br>
+              <%= sale.start_time.strftime("%H:%M")%>
+              〜
+              <%= sale.end_time.strftime("%H:%M")%>
+            </div>
+            <div class='sale-info'>
+              ＜詳細＞<br>
+              <%= sale.info%>
+            </div>
+            <div class='sale-caution'>
+              ＜備考＞<br>
+              <div class='message'>
+                <%= sale.caution%>
+              </div>
             </div>
           </div>
-        </div>
-      <%end%>
+        <%end%>
+      </div>
     </div>
+  <%else%>
+    <div class='sale-data'>
+      <div class='sale-information'>
+        <div class='heading'>
+          本日はセール情報がありません
+        </div>
+        <%= image_tag 'no-sale.jpg', class:'top-image-sale', size:'550x300'%>
+      </div>
+    </div>
+  
+  <%end%>
   </div>
 
   <div class='top-image'>
@@ -57,52 +113,54 @@
   <%# 店舗情報一覧%>
   
   <%if @shops.present?%>
-  
-  <div class='shops-lists'>
-    <div class='shops-list'>
-      <h3 class='shops-message'>加盟店舗一覧</h3>
+    <div class='shops-lists'>
+      <div class='shops-list'>
+        <h3 class='shops-message'>加盟店舗一覧</h3>
+      </div>
+      <div class='shops-data'>
+        <div>
+          <% @shops.each do |shop|%>
+            <div class='shop-info'>
+              <div class='shop-name'>
+                <%= shop.company_name%>
+                <%= shop.shop_name%><br>
+                <%= image_tag shop.image, class: "shop-image"%>
+              </div>
+              <div class='shop-data'>
+                <div class='shop-address'>
+                  ＜所在地＞<br>
+                  <%= shop.postal_code%><br>
+                  <%= shop.prefecture.name%>
+                  <%= shop.address%><br>
+                </div>
+                <div class='shop-tell'>
+                  ＜電話番号＞<br>
+                  <%= shop.tell%>
+                </div>
+                <div class='shop-hour'>
+                  ＜営業時間＞<br>
+                  <%= shop.start_time.strftime("%H:%M")%> 〜
+                  <%= shop.end_time.strftime("%H:%M")%>
+                </div>
+              </div>
+              <div class='bookmark-btn'>
+                <%= link_to 'ブックマークに追加', shop_bookmarks_path(shop.id), method: :post, class:'bookmark-create'%>
+              </div>
+            </div>  
+          <% end %>
+        </div>
+      </div>
     </div>
+  <%else%>
+  <div class='shops-lists'>
     <div class='shops-data'>
-      <div>
-        <% @shops.each do |shop|%>
-          <div class='shop-info'>
-            <div class='shop-name'>
-              <%= shop.company_name%>
-              <%= shop.shop_name%><br>
-              <%= image_tag shop.image, class: "shop-image"%>
-            </div>
-            <div class='shop-data'>
-              <div class='shop-address'>
-                ＜所在地＞<br>
-                <%= shop.postal_code%><br>
-                <%= shop.prefecture.name%>
-                <%= shop.address%><br>
-              </div>
-              <div class='shop-tell'>
-                ＜電話番号＞<br>
-                <%= shop.tell%>
-              </div>
-              <div class='shop-hour'>
-                ＜営業時間＞<br>
-                <%= shop.business_hour%>
-              </div>
-            </div>
-            <div class='bookmark-btn'>
-              <%= link_to 'ブックマークに追加', '#'%>
-            </div>
-          </div>  
-        <% end %>
+      <div class='shop-info'>
+        <div class='shop-name'>
+          加盟店舗がありません
+        </div>
+        <%= image_tag 'no-shop.jpg', class:'top-image-sale', size:'550x300'%>
       </div>
     </div>
   </div>
-  <%else%>
-  <div class='shop-info'>
-    <div class='shop-name'>
-      加盟店舗がありません
-    </div>
-  </div>
-
   <%end%>
-  
-
 </div>
