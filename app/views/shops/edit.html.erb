@@ -63,18 +63,29 @@
       </div>
       <%= f.text_area :tell, class:"input-default", placeholder:"例) 047111222", maxlength:"11" %>
     </div>
-    <div class="form-group">
+    
+  <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">営業時間</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :business_hour, class:"input-default", placeholder:"例) 9:00-20:00", maxlength:"40" %>
+      <div class= 'form-sale-date'>
+      <%= raw sprintf(
+          f.time_select(
+          :start_time,
+          class: 'sale_date'))%>〜
+      <%= raw sprintf(
+          f.time_select(
+          :end_time,
+          class: 'sale_date'
+          ))%>
+      </div>
     </div>
 
     <div class="register-btn">
       <%= f.submit '編集を登録',class:"register-red-btn" %>
     </div>
-
+    
   </div>
 
 <% end %>

@@ -1,7 +1,9 @@
 class ShopsController < ApplicationController
-  # before_action :sign_in, only: [:index, :new, :create]
-  # before_action :admin_user, except: [:index]
-
+  before_action :set_shop, only:[:show, :destroy, :edit, :update]
+  before_action :sign_in
+  before_action :admin_user
+  before_action :same_admin, only:[:edit]
+ 
   def index
     @shops = Shop.all
   end
@@ -52,7 +54,8 @@ class ShopsController < ApplicationController
                                  :prefecture_id,
                                  :address,
                                  :tell,
-                                 :business_hour,
+                                 :start_time,
+                                 :end_time,
                                  :image).merge(user_id: current_user.id)
   end
 
@@ -66,7 +69,11 @@ class ShopsController < ApplicationController
     redirect_to root_path unless current_user.admin?
   end
 
-  def if_not_admin
-    redirect_to root_path unless current_user.admin?
+  def same_admin
+    redirect_to root_path unless current_user.id == @shop.user.id
+  end
+
+  def set_shop
+    @shop = Shop.find(params[:id])
   end
 end

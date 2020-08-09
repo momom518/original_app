@@ -3,7 +3,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :shops
-  has_many :bookmark
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_shops, through: :bookmarks, source: :shop
 
   with_options presence: true do
     validates :nickname

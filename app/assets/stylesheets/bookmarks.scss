@@ -1,0 +1,61 @@
+.bookmark-info{
+  border: 1px solid gray;
+  width : 550px;
+  margin-top: 50px;
+  padding: 50px;
+  .bookmark-name{
+    font-size: 18px;
+    
+    .bookmark-shop{
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid gainsboro;
+      .image{
+        display: flex;
+        justify-content: center;
+        .shop-image{
+          height: 150px;
+          width:200px;
+        }
+      }
+      .shop-name{
+        display: flex;
+        justify-content: center;
+        .bookmark-shop-name{
+        padding: 10px;
+        }
+      }
+      .bookmark-btn{
+        margin: 10px;
+        padding-left:60px ;
+        .show-sales{
+          background-color: rgb(58, 61, 224);
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            font-size: 12px;
+            margin-right: 30px;
+        }
+        .bookmark-delete{
+          background-color: rgb(224, 41, 41);
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            font-size: 12px;
+        }
+      }
+    }
+  }
+}
+.bookmark-btn{
+  display: flex;
+  justify-content: center;
+.bookmark-create{
+  background-color: rgb(22, 230, 101);
+          text-decoration: none;
+          color: white;
+          padding: 10px;
+          font-size: 12px;
+          margin-top:10px;
+  }
+}

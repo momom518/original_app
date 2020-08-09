@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_061529) do
+ActiveRecord::Schema.define(version: 2020_08_08_100305) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2020_08_08_061529) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "shop_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shop_id"], name: "index_bookmarks_on_shop_id"
+    t.index ["user_id", "shop_id"], name: "index_bookmarks_on_user_id_and_shop_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
   create_table "sales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "shop_id", null: false
     t.integer "department_id", null: false
@@ -53,7 +63,8 @@ ActiveRecord::Schema.define(version: 2020_08_08_061529) do
     t.string "postal_code", null: false
     t.integer "prefecture_id", null: false
     t.string "address", null: false
-    t.string "business_hour", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
     t.string "tell", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -76,4 +87,6 @@ ActiveRecord::Schema.define(version: 2020_08_08_061529) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookmarks", "shops"
+  add_foreign_key "bookmarks", "users"
 end
