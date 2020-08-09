@@ -1,4 +1,9 @@
 class SalesController < ApplicationController
+  before_action :set_shop, only:[:new]
+  before_action :sign_in, except:[:index]
+  before_action :admin_user, only: [:new, :create, :destroy]
+  before_action :same_admin, only: [:new]
+  
   def index
     @shops = Shop.all
     @sales = Sale.where(day: Time.new)
@@ -15,7 +20,6 @@ class SalesController < ApplicationController
 
   def new
     @sale = Sale.new
-    @shop = Shop.find(params[:shop_id])
   end
 
   def create
@@ -55,6 +59,18 @@ class SalesController < ApplicationController
   end
 
   def admin_user
-    redirect_to redirect_to root_path unless current_user.admin?
+    redirect_to root_path unless current_user.admin?
+  end
+
+  def sign_in
+    redirect_to root_path unless user_signed_in?
+  end
+
+  def same_admin
+    redirect_to root_path unless current_user.id == @shop.user.id
+  end
+
+  def set_shop
+    @shop = Shop.find(params[:shop_id])
   end
 end

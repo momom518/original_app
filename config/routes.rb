@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :sales, only: [:index, :destroy, :show]
 
-  resources :shops, shallow: true do
+  resources :shops do
     resources :sales, only: [:new, :create]
     resource :bookmarks, only: [:create, :destroy]
   end
