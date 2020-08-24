@@ -9,7 +9,7 @@ https://original-27042.herokuapp.com/
 <h2>開発環境</h2>
 <p>
   Ruby on Railsを使って実装<br>
-  Ruby (6.0.0)
+  Ruby (6.0.0)<br>
   mysql2 (0.5.3)
 </p>
 
