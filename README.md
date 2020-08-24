@@ -6,6 +6,13 @@ README
 <p>このアプリを利用しているスーパーの「当日のタイムセール情報」を見ることができます。</p>
 <h2>デプロイ先URL</h2>
 https://original-27042.herokuapp.com/
+<h2>開発環境</h2>
+<p>
+  Ruby on Railsを使って実装<br>
+  Ruby (6.0.0)
+  mysql2 (0.5.3)
+</p>
+
 <h2>アカウント</h2>
   <h4>●管理者ユーザー スーパーAAA管理者●</h4>
     <p>
